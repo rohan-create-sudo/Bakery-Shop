@@ -1,3 +1,5 @@
+﻿document.documentElement.classList.add("js");
+
 const mainNav = document.getElementById("main-nav");
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -111,8 +113,10 @@ const setActiveLayer = (id) => {
     btn.classList.toggle("active", btn.dataset.layer === id);
   });
 
-  if (!id || !layerData[id]) {
-    layerTooltip.classList.add("hidden");
+  if (!layerTooltip || !layerTitle || !layerDesc || !id || !layerData[id]) {
+    if (layerTooltip) {
+      layerTooltip.classList.add("hidden");
+    }
     return;
   }
 
@@ -133,3 +137,4 @@ layerButtons.forEach((button) => {
     setActiveLayer(button.dataset.layer);
   });
 });
+
